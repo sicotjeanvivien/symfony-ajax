@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello APIController!{% endblock %}
+
+{% block body %}
+<div class='container'>
+
+    <input type="hidden" id='urlShow' value={{ path('api_show') }}>
+    <input type="hidden" id='urlCreate' value={{ path('api_create') }}>
+    <input type="hidden" id='urlDelete' value={{ path('api_delete') }}>
+    <input type="hidden" id='urlUpdateGetData' value={{ path('api_updateGetData') }}>
+    <input type="hidden" id='urlUpdateDataSend' value={{ path('api_updateDataSend') }}>
+
+    <h1 class='mb-3 mt-3'>Symfony/Ajax</h1>
+
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Autheur</th>
+                <th scope="col">Date de publication</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id='tbody'>
+            
+        </tbody>
+    </table>
+    
+
+    <div id="error" class=''></div>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+        Ajouter un article
+    </button>
+
+    {% include "api/view/create-modal.html.twig" %}
+    {% include "api/view/delete-modal.html.twig" %}
+
+</div>  
+{% endblock %}
+

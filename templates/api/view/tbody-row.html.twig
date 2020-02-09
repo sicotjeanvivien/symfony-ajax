@@ -1,0 +1,12 @@
+{% for article in articles %}
+      <tr>
+        <td>{{article.title}}</td>
+        <td>{{article.content}}</td>
+        <td>{{article.author}}</td>
+        <td>{{article.datePublished|date("m/d/Y")}}</td>
+        <td> 
+            <button type="button" class="btn btn-success " data-toggle="modal" data-target="#createModal" onclick="updateGetData(this)" data-id='{{article.id}}'>Modifier</button>
+            <button type="button" class="btn btn-danger " data-id='{{article.id}}' onclick="deleteModalId(this)" data-toggle="modal" data-target="#deleteModal">Supprimer</button>
+        </td>
+      </tr>
+{% endfor %}
