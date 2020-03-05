@@ -1,7 +1,8 @@
     console.log('start sccript');
 
-    //SHOW
-    window.addEventListener('load', function () {
+    //--SHOW--
+    //listerner Load page 
+    window.addEventListener('load',  () => {
         let url = document.querySelector('#urlShow').value
 
         var xhttp = new XMLHttpRequest();
@@ -18,7 +19,7 @@
 
 
     //CREATE 
-    document.querySelector('#createModalSend').addEventListener("click", function () {
+    document.querySelector('#createModalSend').addEventListener("click", () => {
 
         let url = document.querySelector('#urlCreate').value;
         // document.getElementById('createModal').classList.toggle('show');
@@ -70,8 +71,9 @@
 
 
     //UPDATE
-    function updateGetData(e) {
+    const  updateGetData = (e)=> {
         let url = document.querySelector('#urlUpdateGetData').value;
+        //Bug
         document.getElementById('createModalSend').classList.toggle('d-none');
         document.getElementById('updateModalSend').classList.toggle('d-none');
         console.log(e.value)

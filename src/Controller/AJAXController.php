@@ -11,7 +11,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class APIController extends AbstractController
+/**
+ * @Route("/ajax")
+ */
+class AJAXController extends AbstractController
 {
 
     public function __construct(ArticleRepository $articleRepository)
@@ -20,18 +23,18 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/api/index", name="api")
+     * @Route("/index", name="api")
      */
     public function index()
     {
-        return $this->render('api/index.html.twig', [
+        return $this->render('js/index.html.twig', [
             'controller_name' => 'APIController',
             'article' => ''
         ]);
     }
 
     /**
-     * @Route("/api/show", name="api_show")
+     * @Route("/show", name="api_show")
      */
     public function show(Request $request)
     {
@@ -40,7 +43,7 @@ class APIController extends AbstractController
         $message = '';
         $articles = $this->articleRepository->findAll();
 
-        $view = $this->renderView('api/view/tbody-row.html.twig', [
+        $view = $this->renderView('js/view/tbody-row.html.twig', [
             'articles' => $articles,
         ]);
 
@@ -54,7 +57,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/api/create", name="api_create")
+     * @Route("/create", name="api_create")
      */
     public function create(Request $request)
     {
@@ -76,7 +79,7 @@ class APIController extends AbstractController
 
 
         $articles = $this->articleRepository->findAll();
-        $view = $this->renderView('api/view/tbody-row.html.twig', [
+        $view = $this->renderView('js/view/tbody-row.html.twig', [
             'articles' => $articles,
             
         ]);
@@ -92,7 +95,7 @@ class APIController extends AbstractController
 
 
     /**
-     * @Route("/api/delete", name="api_delete")
+     * @Route("/delete", name="api_delete")
      */
     public function delete(Request $request)
     {
@@ -111,7 +114,7 @@ class APIController extends AbstractController
         $message = '';
         $articles = $this->articleRepository->findAll();
 
-        $view = $this->renderView('api/view/tbody-row.html.twig', [
+        $view = $this->renderView('js/view/tbody-row.html.twig', [
             'articles' => $articles,
         ]);
 
@@ -125,7 +128,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/api/updateGetData", name="api_updateGetData")
+     * @Route("/updateGetData", name="api_updateGetData")
      */
     public function updateGetData(Request $request)
     {
@@ -137,7 +140,7 @@ class APIController extends AbstractController
         dump($article, $data);
         
 
-        $view = $this->renderView('api/view/contentCreateModal.html.twig', [
+        $view = $this->renderView('js/view/contentCreateModal.html.twig', [
             'article' => $article,
         ]);
 
@@ -151,7 +154,7 @@ class APIController extends AbstractController
     }
 
      /**
-     * @Route("/api/update", name="api_updateDataSend")
+     * @Route("/update", name="api_updateDataSend")
      */
     public function update(Request $request)
     {
@@ -172,7 +175,7 @@ class APIController extends AbstractController
 
 
         $articles = $this->articleRepository->findAll();
-        $view = $this->renderView('api/view/tbody-row.html.twig', [
+        $view = $this->renderView('js/view/tbody-row.html.twig', [
             'articles' => $articles,
             
         ]);
